@@ -46,7 +46,7 @@ class InstallCommands extends DrushCommands implements SiteAliasManagerAwareInte
     $self = $this->siteAliasManager()->getSelf();
     Drush::drush($self, 'site-install', [$config['profile']], ['yes' => TRUE, 'sites-subdir' => 'default'])->mustRun();
     if (isset($config['module']['tome_sync'])) {
-      Drush::drush($self, 'pm:enable', ['tome_sync'], ['yes' => TRUE])->mustRun();
+      Drush::drush($self, 'pm:enable', ['tome_sync', 'cohesion_tome'], ['yes' => TRUE])->mustRun();
     }
     else {
       Drush::drush($self, 'pm:enable', ['tome'], ['yes' => TRUE])->mustRun();
